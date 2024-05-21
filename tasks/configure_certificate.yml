@@ -5,15 +5,26 @@
         state: directory
         mode: '0755'
       
-  - name: Copy CA certificate to the target host
+  - name: Copy CA certificates to the target host
       copy:
-        src: /files/CA1.crt
-        dest: /root/certs/CA1.crt
+        src: /files/*
+        dest: /root/certs/
 
   - name: Move CA certificate to /etc/ssl/certs/
       become: true
-      command: mv /root/certs/CA1.crt /etc/ssl/certs/CA1.crt
+      command: cp /root/certs/CA* /etc/ssl/certs/*
 
   - name: Update CA certificate store
       become: true
       command: update-ca-trust
+
+  - name: check certificate validity
+      become: true
+      shell: |
+        validityCA1=$(openssl x509 -in /etc/ssl/certs/CA1.crt  -text -noout --dates | grep notAfter)
+        validityCA2=$(openssl x509 -in /etc/ssl/certs/CA2.crt  -text -noout --dates | grep notAfter)
+        validityCA2=$(openssl x509 -in /etc/ssl/certs/CA3.crt  -text -noout --dates | grep notAfter)
+        echo certificate CA1 is valid till $validityCA1
+        echo certificate CA2 is valid till $validityCA2
+        echo certificate CA3 is valid till $validityCA3
+        
