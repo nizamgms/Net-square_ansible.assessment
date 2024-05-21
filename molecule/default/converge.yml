@@ -1,0 +1,7 @@
+---
+  - name: Converge
+    hosts: deployments
+    tasks:
+      - name: assessment Role
+        include_role:
+          name: "../../"
