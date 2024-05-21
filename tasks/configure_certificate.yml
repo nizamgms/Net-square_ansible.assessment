@@ -40,10 +40,14 @@
   - name: check certificate validity
     become: true
     shell: |
-      validityCA1=$(openssl x509 -in /etc/ssl/certs/CA1.crt  -text -noout --dates | grep notAfter)
-      validityCA2=$(openssl x509 -in /etc/ssl/certs/CA2.crt  -text -noout --dates | grep notAfter)
-      validityCA2=$(openssl x509 -in /etc/ssl/certs/CA3.crt  -text -noout --dates | grep notAfter)
-      echo certificate CA1 is valid till $validityCA1
-      echo certificate CA2 is valid till $validityCA2
-      echo certificate CA3 is valid till $validityCA3
-        
+      openssl x509 -in /etc/ssl/certs/CA1.crt  -text -noout --dates | grep notAfter | cut -d'=' -f2
+      openssl x509 -in /etc/ssl/certs/CA2.crt  -text -noout --dates | grep notAfter | cut -d'=' -f2
+      openssl x509 -in /etc/ssl/certs/CA3.crt  -text -noout --dates | grep notAfter | cut -d'=' -f2
+    register: command_output 
+
+  - name: print the exipry date
+    debug:
+      msg: |
+        Certificate CA1 is valid till {{ command_output.stdout_lines[0] }} 
+        Certificate CA2 is valid till {{ command_output.stdout_lines[1] }}
+        Certificate CA3 is valid till {{ command_output.stdout_lines[2] }}  
