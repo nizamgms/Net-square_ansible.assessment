@@ -2,6 +2,6 @@
   - name: Converge
     hosts: deployments
     tasks:
-      - name: assessment Role
+      - name: Net-square_ansible_assessment Role
         include_role:
-          name: "../../"
+          name: "../../../"
