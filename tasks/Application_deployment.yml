@@ -1,0 +1,19 @@
+---
+  - name: copy files to deploy
+    copy: 
+      src: {{ item }}
+      dest: {{ deployment_path }}/venv
+      owner: root
+      mode: 0755
+    with_fileglob:
+    - "files/app.py"
+    - "files/{{ wheel_file }}"
+
+  - name: deploying wheel file
+    pip:
+        name: /opt/example/venv/{{ wheel_file }}
+        virtualenv: {{ deployment_path }}/venv
+        state: present
+
+  - name: running the flask application in virtual environment
+    shell: flask run -p {{ port }}
