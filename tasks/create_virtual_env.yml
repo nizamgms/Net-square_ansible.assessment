@@ -1,18 +1,18 @@
 ---
   - name: new directory for virtual env
     file:
-      path: /opt/example
+      path: {{ deployment_path }}
       state: directory
       mode: '0755'
 
   - name: create a virtual environment
     pip:
       name: virtualenv
-      virtualenv: /opt/example/
+      virtualenv: {{ deployment_path }}
       state: present
 
   - name: activate the virtual environment
-    shell: source /opt/example/venv/bin/activate
+    shell: source {{ deployment_path }}/venv/bin/activate
 
  
       
