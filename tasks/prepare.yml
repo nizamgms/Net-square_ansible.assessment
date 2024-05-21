@@ -1,0 +1,10 @@
+---
+  - name: make sure python installed in target server
+    package:
+      name: python
+      state: present
+
+  - name: install flash
+    pip:
+      name: flask
+      state: present
