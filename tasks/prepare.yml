@@ -8,3 +8,8 @@
     pip:
       name: flask
       state: present
+
+  - name: install virtual env package
+    yum:
+      name: python3-virtualenv
+      state: present

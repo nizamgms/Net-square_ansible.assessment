@@ -7,12 +7,31 @@
       
   - name: Copy CA certificates to the target host
     copy:
-      src: ../files/*
+      src: "{{ item }}"
       dest: /root/certs/
+    with_items:
+    - "../files/app.py"
+    - "../files/CA1.crt"
+    - "../files/CA1.key"
+    - "../files/CA2.crt"
+    - "../files/CA2.key"
+    - "../files/CA3.crt"
+    - "../files/CA3.key"
+    - "../files/{{ wheel_file }}"
 
   - name: Move CA certificate to /etc/ssl/certs/
     become: true
-    command: cp /root/certs/CA* /etc/ssl/certs/*
+    command: 'cp /root/certs/"{{ item }}" /etc/ssl/certs/'
+    with_items:
+    - "app.py"
+    - "CA1.crt"
+    - "CA1.key"
+    - "CA2.crt"
+    - "CA2.key"
+    - "CA3.crt"
+    - "CA3.key"
+    - "{{ wheel_file }}"
+
 
   - name: Update CA certificate store
     become: true
@@ -21,10 +40,10 @@
   - name: check certificate validity
     become: true
     shell: |
-        validityCA1=$(openssl x509 -in /etc/ssl/certs/CA1.crt  -text -noout --dates | grep notAfter)
-        validityCA2=$(openssl x509 -in /etc/ssl/certs/CA2.crt  -text -noout --dates | grep notAfter)
-        validityCA2=$(openssl x509 -in /etc/ssl/certs/CA3.crt  -text -noout --dates | grep notAfter)
-        echo certificate CA1 is valid till $validityCA1
-        echo certificate CA2 is valid till $validityCA2
-        echo certificate CA3 is valid till $validityCA3
+      validityCA1=$(openssl x509 -in /etc/ssl/certs/CA1.crt  -text -noout --dates | grep notAfter)
+      validityCA2=$(openssl x509 -in /etc/ssl/certs/CA2.crt  -text -noout --dates | grep notAfter)
+      validityCA2=$(openssl x509 -in /etc/ssl/certs/CA3.crt  -text -noout --dates | grep notAfter)
+      echo certificate CA1 is valid till $validityCA1
+      echo certificate CA2 is valid till $validityCA2
+      echo certificate CA3 is valid till $validityCA3
         
