@@ -1,0 +1,19 @@
+---
+  - name: create a directory for certificates
+      file:
+        path: /root/certs
+        state: directory
+        mode: '0755'
+      
+  - name: Copy CA certificate to the target host
+      copy:
+        src: /files/CA1.crt
+        dest: /root/certs/CA1.crt
+
+  - name: Move CA certificate to /etc/ssl/certs/
+      become: true
+      command: mv /root/certs/CA1.crt /etc/ssl/certs/CA1.crt
+
+  - name: Update CA certificate store
+      become: true
+      command: update-ca-trust
