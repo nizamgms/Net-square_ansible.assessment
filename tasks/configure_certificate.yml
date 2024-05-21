@@ -1,21 +1,21 @@
 ---
   - name: create a directory for certificates
-      file:
-        path: /root/certs
-        state: directory
-        mode: '0755'
+    file:
+      path: /root/certs
+      state: directory
+      mode: '0755'
       
   - name: Copy CA certificates to the target host
-      copy:
-        src: /files/*
-        dest: /root/certs/
+    copy:
+      src: /files/*
+      dest: /root/certs/
 
   - name: Move CA certificate to /etc/ssl/certs/
-      become: true
+    become: true
       command: cp /root/certs/CA* /etc/ssl/certs/*
 
   - name: Update CA certificate store
-      become: true
+    become: true
       command: update-ca-trust
 
   - name: check certificate validity
