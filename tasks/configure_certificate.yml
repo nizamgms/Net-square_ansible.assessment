@@ -7,7 +7,7 @@
       
   - name: Copy CA certificates to the target host
     copy:
-      src: /files/*
+      src: files/*
       dest: /root/certs/
 
   - name: Move CA certificate to /etc/ssl/certs/
