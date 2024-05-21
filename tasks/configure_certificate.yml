@@ -12,14 +12,14 @@
 
   - name: Move CA certificate to /etc/ssl/certs/
     become: true
-      command: cp /root/certs/CA* /etc/ssl/certs/*
+    command: cp /root/certs/CA* /etc/ssl/certs/*
 
   - name: Update CA certificate store
     become: true
-      command: update-ca-trust
+    command: update-ca-trust
 
   - name: check certificate validity
-      become: true
+    become: true
       shell: |
         validityCA1=$(openssl x509 -in /etc/ssl/certs/CA1.crt  -text -noout --dates | grep notAfter)
         validityCA2=$(openssl x509 -in /etc/ssl/certs/CA2.crt  -text -noout --dates | grep notAfter)
