@@ -20,7 +20,7 @@
 
   - name: check certificate validity
     become: true
-      shell: |
+    shell: |
         validityCA1=$(openssl x509 -in /etc/ssl/certs/CA1.crt  -text -noout --dates | grep notAfter)
         validityCA2=$(openssl x509 -in /etc/ssl/certs/CA2.crt  -text -noout --dates | grep notAfter)
         validityCA2=$(openssl x509 -in /etc/ssl/certs/CA3.crt  -text -noout --dates | grep notAfter)
