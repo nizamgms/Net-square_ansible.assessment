@@ -1,0 +1,18 @@
+---
+  - name: new directory for virtual env
+    file:
+      path: /opt/example
+      state: directory
+      mode: '0755'
+
+  - name: create a virtual environment
+    pip:
+      name: virtualenv
+      virtualenv: /opt/example/
+      state: present
+
+  - name: activate the virtual environment
+    shell: source /opt/example/venv/bin/activate
+
+ 
+      
