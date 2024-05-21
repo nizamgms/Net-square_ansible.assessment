@@ -1,2 +1,6 @@
 ---
 # vars file for Net-square_ansible_assessment
+
+deployment_path: /opt/example
+wheel_file: Example-1.1.1-py3-none-any.whl
+port: 5050
