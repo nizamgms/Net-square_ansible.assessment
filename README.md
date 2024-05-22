@@ -29,8 +29,8 @@ Execution file=[converge.yml](https://github.com/nizamgms/Net-square_ansible_ass
 
     ansible-playbook converge.yml 
     (or)
-    ansible-playbook converge.yml -e "deployment_path=/opt/example wheel_file=Example-1.1.1-py3-none-any.whl port=5050" (if configured low level variables can be overridden 
-                                                                                                                           during runtime like this)
+    ansible-playbook converge.yml -e "deployment_path=/opt/example wheel_file=Example-1.1.1-py3-none-any.whl port=5050" (if configured low level variables, it can be 
+                                                                                                                         overridden during runtime like this)
 
 
 Author Information
