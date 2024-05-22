@@ -1,4 +1,4 @@
-Role Name
+Net-square_ansible_assessment
 =========
 
 Ansible script for certificate configuration and python app installation.
@@ -23,9 +23,11 @@ Example Playbook
 
 Including an example of how to use this role (for instance, with variables passed in as parameters)
 just execute the below given command to start the deployment
+
 Execution file=[converge.yml](https://github.com/nizamgms/Net-square_ansible_assessment/blob/main/molecule/default/converge.yml)
 
     ansible-playbook converge.yml 
+    (or)
     ansible-playbook converge.yml -e "deployment_path=/opt/example wheel_file=Example-1.1.1-py3-none-any.whl port=5050" (if configured low level variables can be overridden 
                                                                                                                            during runtime like this)
 
@@ -37,4 +39,3 @@ Author Information
     DevOps Engineer
     Email: mdnizam.gms@gmail.com
     
-# Net-square_ansible_assessment
