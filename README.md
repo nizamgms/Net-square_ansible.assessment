@@ -1,39 +1,40 @@
 Role Name
 =========
 
-A brief description of the role goes here.
+Ansible script for certificate configuration and python app installation.
 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+This playbook is for **RedHat/CentOS** and can be implemented for all OS like Debian, Ubuntu etc... by making the required changes.
+All other pre-requisites required for the operation are included in the playbook no need of any mannual operations.
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
-
-Dependencies
-------------
-
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+Three Itesms have been parameterized as asked i.e., 
+1. port on which the application will run
+2. Deployment location
+3. Name of the deployment file(wheel file)
+These parameters can be found in [vars/main.yml](https://github.com/nizamgms/Net-square_ansible_assessment/blob/main/vars/main.yml) these cannot be overridden during run time and can be changed in file if required, we can also configure these variables to overwrite during the runtime for that it needs to be configured at a lover level variables.
 
 Example Playbook
 ----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+Including an example of how to use this role (for instance, with variables passed in as parameters)
+just execute the below given command to start the deployment
+Execution file=[converge.yml](https://github.com/nizamgms/Net-square_ansible_assessment/blob/main/molecule/default/converge.yml)
 
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
+    ansible-playbook converge.yml 
+    ansible-playbook converge.yml -e "deployment_path=/opt/example wheel_file=Example-1.1.1-py3-none-any.whl port=5050" (if configured low level variables can be overridden 
+                                                                                                                           during runtime like this)
 
-License
--------
-
-BSD
 
 Author Information
 ------------------
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+    Nizamuddin M D
+    DevOps Engineer
+    Email: mdnizam.gms@gmail.com
+    
 # Net-square_ansible_assessment
