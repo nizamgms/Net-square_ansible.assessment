@@ -16,6 +16,7 @@ Three Itesms have been parameterized as asked i.e.,
 1. port on which the application will run
 2. Deployment location
 3. Name of the deployment file(wheel file)
+
 These parameters can be found in [vars/main.yml](https://github.com/nizamgms/Net-square_ansible_assessment/blob/main/vars/main.yml) these cannot be overridden during run time and can be changed in file if required, we can also configure these variables to overwrite during the runtime for that it needs to be configured at a lover level variables.
 
 Example Playbook
