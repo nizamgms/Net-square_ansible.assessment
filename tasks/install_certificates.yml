@@ -1,4 +1,5 @@
 ---
+# installing CA1 certificate in trust store
   - name: install CA1 certificate in trust store
     shell: |
         cat /root/certs/CA1.crt >> /etc/pki/tls/certs/ca-bundle.crt

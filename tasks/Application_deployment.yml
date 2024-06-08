@@ -1,4 +1,5 @@
 ---
+# copying files on the target host
   - name: copy files to deploy
     copy: 
       src: "{{ item }}"
@@ -9,11 +10,13 @@
     - "../files/app.py"
     - "../files/{{ wheel_file }}"
 
+# Deploying wheel file in virtual env
   - name: deploying wheel file
     pip:
         name: "{{ deployment_path }}/{{ wheel_file }}"
         virtualenv: "{{ deployment_path }}"
         state: present
 
+# Running the flask application
   - name: running the flask application in virtual environment
     shell: flask run -p "{{ port }}"
