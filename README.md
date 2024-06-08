@@ -29,11 +29,11 @@ Execution file=[converge.yml](https://github.com/nizamgms/Net-square_ansible_ass
 
     ansible-playbook converge.yml 
     (or)
-    ansible-playbook converge.yml -e "deployment_path=/opt/example wheel_file=Example-1.1.1-py3-none-any.whl port=5050" (if configured low level variables, it can be 
+    ansible-playbook converge.yml -e "deployment_path=/opt/example wheel_file=Example-1.1.1-py3-none-any.whl port=5050" (if configured low level variables, it can be overridden during runtime like this) 
     ansible-playbook Net-square_ansible_assessment/molecule/default/converge.yml -i inventory --ask-vault-pass (enter Passowrd when promted)
     ansible-playbook Net-square_ansible_assessment/molecule/default/converge.yml -i inventory --ask-vault-pass --skip-tags "prepare" (use this to skip any particular task, and can also be used to run only selected task)
 
-                                                                                                                         overridden during runtime like this)
+                                                                                                                         
 
 
 Author Information
