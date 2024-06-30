@@ -26,15 +26,12 @@
     become: true
     command: 'cp /root/certs/"{{ item }}" /etc/ssl/certs/'
     with_items:
-    - "app.py"
     - "CA1.crt"
     - "CA1.key"
     - "CA2.crt"
     - "CA2.key"
     - "CA3.crt"
     - "CA3.key"
-    - "{{ wheel_file }}"
-
 
 # updating the trust store
   - name: Update CA certificate store
