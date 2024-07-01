@@ -1,6 +1,7 @@
 ---
   - name: Converge
     hosts: deployments
+    become: true
     tasks:
       - name: Net-square_ansible_assessment Role
         include_role:
